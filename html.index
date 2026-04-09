@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Lückentext – Nutzung von Kernenergie</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#e6f7ff;
+padding:30px;
+}
+
+.wrapper{
+max-width:1200px;
+margin:auto;
+}
+
+.layout{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+}
+
+.box{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+
+.text{
+line-height:1.7;
+}
+
+.lucke{
+background:#eee;
+padding:4px 8px;
+border-radius:4px;
+font-weight:bold;
+}
+
+.option{
+display:flex;
+gap:10px;
+padding:10px;
+border:1px solid #ccc;
+border-radius:6px;
+margin:8px 0;
+}
+
+.option:hover{
+background:#e8f7ff;
+}
+
+input{
+width:50px;
+padding:4px;
+}
+
+.correct{
+background:#b9f6ca;
+}
+
+.wrong{
+background:#ffcdd2;
+}
+
+.buttons{
+text-align:center;
+margin-top:25px;
+}
+
+button{
+padding:12px 22px;
+margin:6px;
+border:none;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+}
+
+.check{
+background:#4CAF50;
+color:white;
+}
+
+.restart{
+background:#f44336;
+color:white;
+}
+
+.result{
+margin-top:20px;
+text-align:center;
+font-size:22px;
+font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<div class="layout">
+
+<div class="box">
+
+<h2>Nutzung von Kernenergie</h2>
+
+<div class="text">
+
+<p>
+Kernenergie ist eine wichtige Energiequelle in vielen Ländern der Welt. 
+<span class="lucke">[1]</span> 
+Sie wird vor allem zur Stromerzeugung genutzt.
+</p>
+
+<p>
+Ein großer Vorteil der Kernenergie ist die geringe CO₂-Emission. 
+<span class="lucke">[2]</span> 
+Im Vergleich zu fossilen Brennstoffen trägt sie weniger zum Klimawandel bei.
+</p>
+
+<p>
+Trotzdem gibt es viele Kritiker. 
+<span class="lucke">[3]</span> 
+Sie weisen auf die Gefahren von Atomunfällen hin.
+</p>
+
+<p>
+Ein weiteres Problem ist der radioaktive Abfall. 
+<span class="lucke">[4]</span> 
+Dieser bleibt über viele Jahre hinweg gefährlich.
+</p>
+
+<p>
+Außerdem sind Kernkraftwerke sehr teuer im Bau und Betrieb. 
+<span class="lucke">[5]</span> 
+Viele Länder investieren daher zunehmend in erneuerbare Energien.
+</p>
+
+<p>
+Die Zukunft der Kernenergie bleibt umstritten. 
+<span class="lucke">[6]</span> 
+Einige Länder bauen neue Anlagen, während andere aussteigen.
+</p>
+
+</div>
+
+</div>
+
+<div class="box">
+
+<h3>Welche Sätze passen in die Lücken?</h3>
+<p>Zwei Sätze passen nicht.</p>
+
+<div class="option">
+<input type="number" min="1" max="6">
+<b>A</b> Dadurch können große Mengen Energie erzeugt werden.
+</div>
+
+<div class="option">
+<input type="number" min="1" max="6">
+<b>B</b> Deshalb gilt sie als relativ klimafreundlich.
+</div>
+
+<div class="option">
+<input type="number" min="1" max="6">
+<b>C</b> Kritiker argumentieren jedoch gegen ihre Sicherheit.
+</div>
+
+<div class="option">
+<input type="number" min="1" max="6">
+<b>D</b> Die Entsorgung dieses Mülls ist sehr schwierig.
+</div>
+
+<div class="option">
+<input type="number" min="1" max="6">
+<b>E</b> Aus diesem Grund suchen viele Staaten nach Alternativen.
+</div>
+
+<div class="option">
+<input type="number" min="1" max="6">
+<b>F</b> Daher gibt es weltweit unterschiedliche Strategien.
+</div>
+
+<div class="option">
+<input type="number" min="1" max="6">
+<b>G</b> Viele Menschen fahren täglich mit dem Zug.
+</div>
+
+<div class="option">
+<input type="number" min="1" max="6">
+<b>H</b> Solarenergie wird nur im Sommer genutzt.
+</div>
+
+</div>
+
+</div>
+
+<div class="buttons">
+<button class="check" onclick="checkAnswers()">Antworten überprüfen</button>
+<button class="restart" onclick="restart()">Neu starten</button>
+</div>
+
+<div id="result" class="result"></div>
+
+</div>
+
+<script>
+
+const solutions={
+"A":1,
+"B":2,
+"C":3,
+"D":4,
+"E":5,
+"F":6
+};
+
+function checkAnswers(){
+
+let score=0;
+
+document.querySelectorAll(".option").forEach(opt=>{
+
+let letter=opt.querySelector("b").innerText;
+let value=opt.querySelector("input").value;
+
+if(value==="") return;
+
+if(solutions[letter]==value){
+opt.classList.add("correct");
+score++;
+}else{
+opt.classList.add("wrong");
+}
+
+});
+
+document.getElementById("result").innerText="Ergebnis: "+score+" / 6 richtig";
+
+}
+
+function restart(){
+
+document.querySelectorAll("input").forEach(i=>i.value="");
+
+document.querySelectorAll(".option").forEach(opt=>{
+opt.classList.remove("correct","wrong");
+});
+
+document.getElementById("result").innerText="";
+
+}
+
+</script>
+
+</body>
+</html>
